@@ -1,0 +1,97 @@
+﻿@model IEnumerable<MVC.Models.FirmyModel>
+
+@{
+    ViewBag.Title = "Zarządzanie kontrahentami";
+}
+<link rel="stylesheet" href="~/Content/Stylings/kontrahenci.css" />
+<link rel="stylesheet" href="~/Content/Stylings/buttons.css" />
+<br />
+<p>
+    <a href="@Url.Action("DodajLubEdytuj","Firmy")" class="btn btn-add">Dodaj nowego kontrahenta</a>
+</p>
+<table>
+    <thead>
+        <tr>
+            <th class="text-center">
+                Nazwa firmy
+            </th>
+            <th class="text-center">
+                Numer NIP
+            </th>
+            <th class="text-center">
+                Numer REGON
+            </th>
+            <th class="text-center">
+                Adres
+            </th>
+            <th class="text-center">
+                Numer telefonu
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.StronaWWW)
+            </th>
+            <th class="text-center">
+                Numer konta
+            </th>
+            <th class="text-center">Opcje</th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.NazwaFirmy)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Nip)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Regon)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Miasto), @Html.DisplayFor(modelItem => item.Ulica) @Html.DisplayFor(modelItem => item.NrBudynku)/@Html.DisplayFor(modelItem => item.NrLokalu) <br /> @Html.DisplayFor(modelItem => item.KodPocztowy) @Html.DisplayFor(modelItem => item.Poczta) @Html.DisplayFor(modelItem => item.Kraj)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.NrTelefonu)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.StronaWWW)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.NrKonta)
+                </td>
+                <td class="text-center">
+                    <a href="@Url.Action("PracownicyFirmy", "Pracownicy", new { id = item.IdFirmy})" class="btn btn-employee display">Pracownicy firmy</a>
+                    <a href="@Url.Action("DodajLubEdytuj", "Firmy", new { id = item.IdFirmy})" class="btn btn-green size text-center display">Edytuj</a>
+                    <a onclick="Usun(@item.IdFirmy)" class="btn btn-delete size text-center display">Usuń</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+@section scripts{
+
+    <script>
+
+
+        $(function () {
+            var successMessage = '@TempData["Sukces"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+
+        function Usun(id) {
+            alertify.confirm('Usuwanie','Czy na pewno chcesz usunąć tego kontrahenta?',function(){
+                window.location.href  = '@Url.Action("Usun","Firmy")/'+id;
+            },null );
+        }
+    </script>
+}

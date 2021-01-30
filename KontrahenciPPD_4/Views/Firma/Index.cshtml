@@ -1,0 +1,117 @@
+﻿@model IEnumerable<KontrahenciPPD_4.Models.Firmy>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NazwaFirmy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Regon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Miasto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ulica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NrBudynku)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NrLokalu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KodPocztowy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Poczta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NrTelefonu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kraj)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StronaWWW)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NrKonta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Firmy2.NazwaFirmy)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NazwaFirmy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Regon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Miasto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ulica)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NrBudynku)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NrLokalu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KodPocztowy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Poczta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NrTelefonu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kraj)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StronaWWW)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NrKonta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Firmy2.NazwaFirmy)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdFirmy }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdFirmy }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdFirmy })
+        </td>
+    </tr>
+}
+
+</table>

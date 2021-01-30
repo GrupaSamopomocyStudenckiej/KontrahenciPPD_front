@@ -1,0 +1,62 @@
+﻿@model MVC.Models.PracownicyModel
+@{
+    ViewBag.Title = "Dodaj lub edytuj pracownika";
+}
+
+<link href="~/Content/Stylings/pracownicyeditform.css" rel="stylesheet" />
+<link href="~/Content/Stylings/buttons.css" rel="stylesheet" />
+
+<div class="form-body" id="signupform">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.IdPracownika)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdFirmy)
+            <div>
+                @Html.EditorFor(model => model.IdFirmy, new { htmlAttributes = new { @min = 0 } }
+    )
+                @Html.ValidationMessageFor(model => model.IdFirmy)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Imie)
+            <div>
+                @Html.EditorFor(model => model.Imie)
+                @Html.ValidationMessageFor(model => model.Imie)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nazwisko)
+            <div>
+                @Html.EditorFor(model => model.Nazwisko)
+                @Html.ValidationMessageFor(model => model.Nazwisko)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.NrTelefonu)
+            <div>
+                @Html.EditorFor(model => model.NrTelefonu)
+                @Html.ValidationMessageFor(model => model.NrTelefonu)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email)
+            <div>
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="Zapisz" class="btn btn-green buttons" />
+            <input type="reset" value="Resetuj" class="btn btn-delete buttons" />
+        </div>
+    }
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+
+}

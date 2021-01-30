@@ -1,0 +1,21 @@
+﻿.form-body {
+    margin-top: 10px;
+}
+
+.form-group {
+    margin: 5px 0 0 0;
+}
+
+span {
+    margin-left: 3px;
+}
+
+.buttons {
+    margin: 10px 2px 10px 2px;
+}
+
+.btn:focus,
+.btn:active {
+    outline: none !important;
+    box-shadow: none;
+}

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<MVC.Models.PracownicyModel>
+
+@{ ViewBag.Title = "Zarządzanie pracownikami"; }
+
+<link rel="stylesheet" href="~/Content/Stylings/pracownicy.css" />
+<link rel="stylesheet" href="~/Content/Stylings/buttons.css" />
+<br />
+
+<p>
+    <a href="@Url.Action("DodajLubEdytuj","Pracownicy")" class="btn btn-add">Dodaj nowego pracownika</a>
+</p>
+<table class="center">
+    <thead>
+        <tr>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Imie)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Nazwisko)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.NrTelefonu)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th class="text-center">
+                Opcje
+            </th>
+        </tr>
+    </thead>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Imie)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Nazwisko)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.NrTelefonu)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td class="text-center">
+                <a href="@Url.Action("DodajLubEdytuj", "Pracownicy", new { id = item.IdPracownika})" class="btn btn-green size">  Edytuj</a>
+                <a onclick="Usun(@item.IdPracownika)" class="btn btn-delete size">Usuń</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section scripts{
+    <script>
+
+        $(function () {
+            var successMessage = '@TempData["Sukces"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+
+        function Usun(id) {
+            alertify.confirm('Usuwanie','Czy na pewno chcesz usunąć tego pracownika?',function(){
+                window.location.href  = '@Url.Action("Usun", "Pracownicy")/'+id;
+            },null );
+        }
+    </script>
+}
